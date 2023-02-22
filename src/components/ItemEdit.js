@@ -1,17 +1,23 @@
 import { useState } from "react";
 
-function ItemEdit() {
-  const [title, setTitle] = useState("");
+function ItemEdit({ item, onEdit, onSubmit }) {
+  const [title, setTitle] = useState(item.title);
 
   const handleChange = (e) => {
-    console.log(e.target.value);
     setTitle(e.target.value);
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    onEdit(item.id, title);
+    onSubmit();
+  };
+
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <label>new title</label>
       <input value={title} onChange={handleChange} />
+      <button>save</button>
     </form>
   );
 }

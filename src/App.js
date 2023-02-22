@@ -5,6 +5,16 @@ import ItemList from "./components/ItemList";
 function App() {
   const [items, setItems] = useState([]);
 
+  const editItemById = (id, newTitle) => {
+    const updatedItems = items.map((item) => {
+      if (item.id === id) {
+        return { ...item, title: newTitle };
+      }
+      return item;
+    });
+    setItems(updatedItems);
+  };
+
   // delete an item off from the shopping list
   const deleteItemById = (id) => {
     const updatedItems = items.filter((item) => {
@@ -23,7 +33,7 @@ function App() {
     <div>
       <h1>Shopping List</h1>
       <CreateItem onSubmit={createItem} />
-      <ItemList items={items} onDelete={deleteItemById} />
+      <ItemList items={items} onDelete={deleteItemById} onEdit={editItemById} />
     </div>
   );
 }

@@ -2,21 +2,28 @@ import { useState } from "react";
 
 import ItemEdit from "./ItemEdit";
 
-function ItemShow({ item, onDelete }) {
+function ItemShow({ item, onDelete, onEdit }) {
   const [showEdit, setShowEdit] = useState(false);
 
+  // trigger the delete button
   const handleDeleteClick = () => {
     onDelete(item.id);
   };
 
+  // triggers the edit button
   const handleEditClick = () => {
-    console.log("edit clicked");
     setShowEdit(!showEdit);
   };
 
+  // handleSubmit function when user save a new item
+  const handleSubmit = () => {
+    setShowEdit(false);
+  };
+
+  // display itemEdit component when user click the edit button
   let content = <h3>{item.title}</h3>;
   if (showEdit) {
-    content = <ItemEdit />;
+    content = <ItemEdit onEdit={onEdit} item={item} onSubmit={handleSubmit} />;
   }
 
   return (
