@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function ItemEdit({ item, onEdit, onSubmit }) {
+function ItemEdit({ item, onSubmit }) {
   const [title, setTitle] = useState(item.title);
 
   const handleChange = (e) => {
@@ -9,8 +9,7 @@ function ItemEdit({ item, onEdit, onSubmit }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onEdit(item.id, title);
-    onSubmit();
+    onSubmit(item.id, title);
   };
 
   return (
