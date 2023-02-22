@@ -5,6 +5,7 @@ import ItemList from "./components/ItemList";
 function App() {
   const [items, setItems] = useState([]);
 
+  // delete an item off from the shopping list
   const deleteItemById = (id) => {
     const updatedItems = items.filter((item) => {
       return item.id !== id;
@@ -12,6 +13,7 @@ function App() {
     setItems(updatedItems);
   };
 
+  // add an item to the shopping list
   const createItem = (item) => {
     const randomID = Math.floor(Math.random() * 9999);
     const updatedItems = [...items, { id: randomID, title: item }];
