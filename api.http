@@ -1,0 +1,31 @@
+# Get all lists
+GET http://localhost:3001/lists HTTP/1.1
+Content-Type: application/json
+
+###
+
+# Create an item
+POST http://localhost:3001/lists HTTP/1.1
+Content-Type: application/json
+
+{
+  "item": "Banana"
+}
+
+####
+
+# Update an item
+PUT http://localhost:3001/lists/1 HTTP/1.1
+Content-Type: application/json
+
+{
+  "item": "Strawberries"
+}
+
+###
+
+# Delete an item
+
+DELETE http://localhost:3001/lists/1 HTTP/1.1
+Content-Type: application/json
+
